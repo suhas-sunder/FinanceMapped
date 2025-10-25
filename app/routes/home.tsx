@@ -84,7 +84,7 @@ export default function Home({}: Route.ComponentProps) {
         "@type": "Organization",
         name: "FinanceMapped",
         url: "https://financemapped.com/",
-        logo: "https://financemapped.com/logo.png",
+        logo: "https://financemapped.com/finance-mapped-education-history-logo.png",
       },
       {
         "@type": "FAQPage",
@@ -186,24 +186,6 @@ export default function Home({}: Route.ComponentProps) {
     },
   ];
 
-  const readingPaths = [
-    {
-      t: "Start here path",
-      d: "Three short explainers that set the stage.",
-      href: "/paths/start-here",
-    },
-    {
-      t: "Banking foundations path",
-      d: "Follow how banks evolved and why they matter.",
-      href: "/paths/banking-foundations",
-    },
-    {
-      t: "Crises and lessons path",
-      d: "Read significant events and what they revealed.",
-      href: "/paths/crises-and-lessons",
-    },
-  ];
-
   const learningGames = [
     {
       t: "Concept match",
@@ -225,6 +207,7 @@ export default function Home({}: Route.ComponentProps) {
   return (
     <main className="bg-white text-slate-900">
       <script
+        aria-hidden="true"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
@@ -263,7 +246,7 @@ export default function Home({}: Route.ComponentProps) {
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl">
                 <img
                   src={logo}
-                  alt="FinanceMapped"
+                  alt="FinanceMapped logo"
                   className="inline h-10 w-10 mr-3 mb-2"
                 />
                 Understand money with clear knowledge maps and history
@@ -439,8 +422,8 @@ export default function Home({}: Route.ComponentProps) {
       <section className="mx-auto max-w-6xl px-4 py-12">
         <h2 className="text-2xl font-bold text-slate-900">Who we help</h2>
         <p className="mt-3 text-slate-700">
-          FinanceMapped is written for learners who want clarity and context.
-          It works well for classes and independent study.
+          FinanceMapped is written for learners who want clarity and context. It
+          works well for classes and independent study.
         </p>
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           {[
@@ -472,8 +455,8 @@ export default function Home({}: Route.ComponentProps) {
       <section className="mx-auto max-w-6xl px-4 pb-12">
         <h2 className="text-2xl font-bold text-slate-900">Why it works</h2>
         <p className="mt-3 text-slate-700">
-          Knowledge maps organize ideas, history adds depth, and short explainers
-          keep reading focused.
+          Knowledge maps organize ideas, history adds depth, and short
+          explainers keep reading focused.
         </p>
         <ul className="mt-4 list-inside list-disc space-y-2 text-slate-800">
           <li>Plain language explainers with references</li>
@@ -509,6 +492,390 @@ export default function Home({}: Route.ComponentProps) {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Deep Learning Explorer Section - Drop Above FAQ */}
+      <section className="mx-auto max-w-6xl px-4 py-16 space-y-12">
+        {/* Section Header */}
+        <header>
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Explore how money and modern finance evolved
+          </h2>
+          <p className="mt-3 text-lg text-slate-700 max-w-3xl">
+            FinanceMapped helps you learn the story behind our financial world.
+            You will see how money systems grew, how crises shaped policy, and
+            how ideas connect from ancient trade to digital payments.
+          </p>
+        </header>
+
+        {/* Key Insight Callout */}
+        <div className="rounded-2xl border border-teal-200 bg-teal-50 p-6 shadow-sm">
+          <p className="text-base font-semibold text-[#0B1B2B]">
+            Finance is a long journey. It did not appear fully formed. It
+            developed over time through innovation, trust, conflict,
+            uncertainty, and problem solving.
+          </p>
+        </div>
+
+        {/* Journey Block: Origins of Money */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> How did money begin
+          </h3>
+          <p className="text-slate-700">
+            The first money was not paper or numbers in a bank. It began as
+            items that people trusted to hold value. Metal coins stamped by
+            authorities made trade easier across distance. Later, receipts for
+            stored gold became widely accepted as claims to real value.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              {
+                t: "Barter to exchange",
+                d: "Trade moves beyond matching goods directly",
+              },
+              {
+                t: "Coins establish trust",
+                d: "Stamped metal proved weight and authenticity",
+              },
+              {
+                t: "Paper receipts",
+                d: "Storage notes evolve into money itself",
+              },
+            ].map((x) => (
+              <div
+                key={x.t}
+                className="rounded-xl border border-slate-200 bg-white p-4 text-sm shadow-sm"
+              >
+                <div className="font-semibold text-slate-900">{x.t}</div>
+                <div className="mt-1 text-slate-600">{x.d}</div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* Journey Block: Birth of Banking */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> Why do banks exist
+          </h3>
+          <p className="text-slate-700">
+            Banks did not start as giant institutions. They began as safe places
+            to store coin. People realized banks could also lend money to others
+            who needed it. This created a cycle that supported business growth
+            and increased prosperity.
+          </p>
+
+          {/* Timeline Style */}
+          <div className="border-l-2 border-teal-400 ml-2 pl-6 space-y-6">
+            {[
+              {
+                year: "1400s",
+                label: "Early merchant banks in Europe",
+              },
+              {
+                year: "1600s",
+                label: "Central banks introduced to stabilize payment systems",
+              },
+              {
+                year: "1900s",
+                label: "Deposit insurance improves public confidence",
+              },
+              {
+                year: "Today",
+                label: "Digital banking allows instant transactions worldwide",
+              },
+            ].map((i) => (
+              <div key={i.year}>
+                <div className="font-semibold text-slate-900">{i.year}</div>
+                <div className="text-slate-600 text-sm">{i.label}</div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* Journey Block: Markets and risk */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> Why do markets rise and
+            fall
+          </h3>
+          <p className="text-slate-700">
+            Markets create places where investors buy and sell ownership in
+            companies or debt issued by governments. Prices move when
+            expectations change. These movements can be smooth or sudden,
+            sometimes leading to major disruptions like the crash of 1929 or the
+            financial crisis of 2008.
+          </p>
+          <blockquote className="border-l-4 border-teal-300 pl-4 italic text-slate-700 bg-slate-50 p-4 rounded-lg">
+            Markets reflect stories about the future. Fear and optimism can move
+            prices more than logic alone.
+          </blockquote>
+        </article>
+
+        {/* Connections Block */}
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h4 className="text-lg font-bold text-slate-900">
+            How ideas connect
+          </h4>
+          <ul className="mt-3 space-y-2 text-sm text-slate-700 list-disc list-inside">
+            <li>
+              Money systems support banks by giving them trusted currency to
+              move
+            </li>
+            <li>Banks influence markets through lending and liquidity</li>
+            <li>Crises force reforms that shape future policy and stability</li>
+            <li>Payment networks connect economies and raise new risks</li>
+          </ul>
+          <p className="mt-3 text-slate-700">
+            Understanding these links helps make financial news and economic
+            change easier to interpret.
+          </p>
+        </div>
+
+        {/* Era Callouts */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> Crises that changed the
+            rules
+          </h3>
+          <p className="text-slate-700">
+            Financial shock often leads to reform. Each disruption reveals
+            weaknesses in the system and reshapes how finance works.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                title: "Great Depression",
+                desc: "Depositors rushed to withdraw money. Deposit insurance emerged to restore trust.",
+              },
+              {
+                title: "1970s inflation",
+                desc: "Prices surged. Central banks adopted new policy tools to guide stability.",
+              },
+              {
+                title: "2008 crisis",
+                desc: "Housing and credit stress exposed global financial risks. Regulations updated again.",
+              },
+            ].map((x) => (
+              <div
+                key={x.title}
+                className="rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm"
+              >
+                <div className="font-semibold text-slate-900">{x.title}</div>
+                <div className="mt-1 text-slate-700 text-sm">{x.desc}</div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* Final Exploratory CTA */}
+        <div className="rounded-2xl border border-[#0B1B2B] bg-[#0B1B2B] p-6 text-white shadow-sm">
+          <h4 className="text-lg font-bold">Continue your exploration</h4>
+          <p className="text-sm mt-2 text-slate-200">
+            Choose a reading path to see how systems evolve over time or follow
+            a single idea through history. Explore confidently. Everything here
+            is built for education and curiosity.
+          </p>
+          <div className="mt-4 flex gap-3">
+            <a
+              href="/start-here"
+              className="rounded-xl bg-teal-400 px-4 py-2 text-sm font-semibold text-slate-900 hover:brightness-95"
+            >
+              Start here
+            </a>
+            <a
+              href="/history"
+              className="rounded-xl border border-teal-300 px-4 py-2 text-sm font-semibold text-white hover:bg-white/10"
+            >
+              Explore history
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Extended Exploration Section - Additional 1000+ words */}
+      <section className="mx-auto max-w-6xl px-4 py-16 space-y-12">
+        {/* Section Intro */}
+        <header>
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            How financial systems grow, adapt, and connect the world
+          </h2>
+          <p className="mt-3 text-lg text-slate-700 max-w-3xl">
+            The financial system is more than banks and markets. It is a living
+            network that responds to risk, innovation, global trade, and the
+            everyday needs of households and businesses. Understanding how these
+            systems evolved helps us see the logic behind modern finance.
+          </p>
+        </header>
+
+        {/* Section: Payment Evolution */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> How payments transformed
+            the world
+          </h3>
+          <p className="text-slate-700">
+            Early trade required slow physical exchange of coins or goods. Over
+            centuries, payment systems evolved to move value faster and further.
+            Checks gave people a safe way to pay without carrying large amounts
+            of metal. Cards introduced rapid point of sale transactions and
+            global networks. Today, digital payments are shaping entirely new
+            expectations of speed, security, and availability.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                t: "Checks and clearing houses",
+                d: "Organized channels ensured money could move between banks reliably.",
+              },
+              {
+                t: "Cards and networks",
+                d: "Shared standards turned local payments into global ones.",
+              },
+              {
+                t: "Instant digital transfers",
+                d: "Mobile banking and online commerce reshaped daily life.",
+              },
+            ].map((x) => (
+              <div
+                key={x.t}
+                className="rounded-xl border border-slate-200 bg-white p-4 text-sm shadow-sm"
+              >
+                <div className="font-semibold text-slate-900">{x.t}</div>
+                <div className="mt-1 text-slate-600">{x.d}</div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* Section: Trust and Institutions */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> Why trust matters in
+            finance
+          </h3>
+          <p className="text-slate-700">
+            Financial systems rely on confidence. People must believe banks will
+            store their money safely, markets will record trades correctly, and
+            currencies will retain value. Institutions exist to protect
+            stability, and their credibility must be earned and maintained. When
+            trust breaks, systems adjust.
+          </p>
+
+          <blockquote className="border-l-4 border-teal-300 pl-4 italic text-slate-700 bg-slate-50 p-4 rounded-lg">
+            Trust is the invisible foundation of modern finance. Without it,
+            money loses meaning.
+          </blockquote>
+
+          <ul className="space-y-2 list-disc list-inside text-sm text-slate-700">
+            <li>Bank supervision helps ensure safety and soundness</li>
+            <li>
+              Central banks act as lenders of last resort when panic rises
+            </li>
+            <li>
+              Deposit guarantees protect households from catastrophic loss
+            </li>
+            <li>Transparency rules strengthen fair markets</li>
+          </ul>
+        </article>
+
+        {/* Section: Policy and Stability */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> How policy shapes financial
+            stability
+          </h3>
+          <p className="text-slate-700">
+            Financial policies are responses to experience. Some rules prevent
+            excess risk. Others ensure the system supports growth and adapts to
+            change. Policies evolve as new challenges appear and as technology
+            creates new opportunities.
+          </p>
+
+          <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="text-slate-800 text-sm">
+              <strong>Policy examples across eras:</strong>
+            </p>
+            <ul className="mt-2 space-y-1 text-sm text-slate-700 ml-4 list-disc">
+              <li>
+                Capital rules require banks to hold buffers against losses
+              </li>
+              <li>Consumer protections address information imbalances</li>
+              <li>Global accords reduce coordination risk in crises</li>
+              <li>Digital identity and cybersecurity protect payment access</li>
+            </ul>
+          </div>
+        </article>
+
+        {/* Section: Global Finance */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> Finance without borders
+          </h3>
+          <p className="text-slate-700">
+            Money, goods, and investments travel across countries. Exchange
+            rates allow one currency to be traded for another. International
+            institutions help balance cooperation and competition. Global
+            finance has connected economies closer than ever, creating
+            opportunities for growth and challenges for stability.
+          </p>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                title: "Exchange networks",
+                desc: "Currency conversion enables global trade to operate smoothly.",
+              },
+              {
+                title: "Cross border investment",
+                desc: "Capital flows shape economic outcomes in distant places.",
+              },
+              {
+                title: "Shared policies",
+                desc: "Cooperation can reduce risk but requires negotiation.",
+              },
+            ].map((x) => (
+              <div
+                key={x.title}
+                className="rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-sm"
+              >
+                <div className="font-semibold text-slate-900">{x.title}</div>
+                <div className="mt-1 text-slate-700 text-sm">{x.desc}</div>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* Section: Technology and the Future */}
+        <article className="space-y-4">
+          <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
+            <span className="text-teal-500">○</span> How technology keeps
+            reshaping finance
+          </h3>
+          <p className="text-slate-700">
+            Technology has always changed how money moves. From printing presses
+            to chip cards to smartphones, each innovation influences what people
+            expect from the financial system. New technologies bring new
+            questions for trust, privacy, speed, and oversight.
+          </p>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="font-semibold text-slate-900 mb-2 text-sm">
+              Questions shaping the future:
+            </div>
+            <ul className="space-y-2 list-disc list-inside text-sm text-slate-700">
+              <li>
+                How will digital ledgers influence settlement and record keeping
+              </li>
+              <li>What role will governments play in digital currencies</li>
+              <li>How do payment innovations reach underserved regions</li>
+              <li>How can systems stay safe from evolving threats</li>
+            </ul>
+          </div>
+        </article>
       </section>
 
       {/* FAQ */}
