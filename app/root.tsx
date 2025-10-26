@@ -5,12 +5,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  redirect, // ⟵ add this
+  redirect,
+  NavLink, // ⟵ add this
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import Footer from "./client/navigation/Footer";
 
+import logo from "./client/assets/images/finance-mapped-education-history-logo.png";
+import { useState } from "react";
 /* ---------- Trailing slash helpers (one place, app-level) ---------- */
 function needsStrip(pathname: string) {
   if (pathname === "/") return false;
@@ -44,9 +48,81 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-  // Canonical URL without trailing slash
-  { rel: "canonical", href: "https://moneydungeon.com" },
 ];
+
+function NavBar() {
+  const [open, setOpen] = useState(false);
+
+  const navItems = [
+    { name: "Finance Education", href: "/finance-education/learn-basics" },
+    // { name: "History", href: "/history" },
+    // { name: "Knowledge Maps", href: "/maps" },
+    // { name: "Games", href: "/learn/games/concept-match" },
+    // { name: "About", href: "/about" },
+  ];
+
+  return (
+    <nav className="bg-[#0B1B2B] border-b border-slate-700/40 text-white">
+      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+        {/* Logo & Brand */}
+        <NavLink to="/" className="flex items-center gap-2">
+          <img src={logo} alt="FinanceMapped" className="h-8 w-8" />
+          <span className="font-semibold text-lg">FinanceMapped</span>
+        </NavLink>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-6">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className={({ isActive }) =>
+                `text-sm font-medium transition ${
+                  isActive
+                    ? "text-teal-300 pb-1"
+                    : "text-slate-200 hover:text-teal-300"
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-slate-200 hover:text-white"
+          aria-label="Toggle menu"
+        >
+          {open ? "✕" : "☰"}
+        </button>
+      </div>
+
+      {/* Mobile Dropdown */}
+      {open && (
+        <div className="md:hidden bg-[#0B1B2B] border-t border-slate-700/40">
+          {navItems.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                `block px-4 py-3 text-sm transition ${
+                  isActive
+                    ? "text-teal-300 bg-slate-900/20"
+                    : "text-slate-200 hover:bg-slate-900/20"
+                }`
+              }
+            >
+              {item.name}
+            </NavLink>
+          ))}
+        </div>
+      )}
+    </nav>
+  );
+}
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -58,9 +134,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <NavBar />
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Footer />
       </body>
     </html>
   );

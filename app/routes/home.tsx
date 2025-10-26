@@ -1,15 +1,11 @@
-// app/routes/_index.tsx
-import { json } from "@remix-run/node";
 import type { Route } from "./+types/home";
-import { useLoaderData } from "react-router";
-import logo from "../client/assets/images/finance-mapped-education-history-logo.png";
 
 export function meta({}: Route.MetaArgs) {
   const title =
     "FinanceMapped | Learn How Money Works with Knowledge Maps and History";
   const description =
     "FinanceMapped is an educational site that explains how money, markets, and banking systems work. Read clear explainers, explore finance history, and follow knowledge maps that connect ideas.";
-  const url = "https://financemapped.com/";
+  const url = "https://www.financemapped.com";
   return [
     { title },
     { name: "description", content: description },
@@ -31,16 +27,7 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export function loader({ context }: Route.LoaderArgs) {
-  return json({
-    message: context.VALUE_FROM_EXPRESS,
-    nowISO: new Date().toISOString(),
-  });
-}
-
 export default function Home({}: Route.ComponentProps) {
-  const { message, nowISO } = useLoaderData<typeof loader>();
-
   const faqs = [
     {
       q: "What is FinanceMapped?",
@@ -71,20 +58,20 @@ export default function Home({}: Route.ComponentProps) {
       {
         "@type": "WebSite",
         name: "FinanceMapped",
-        url: "https://financemapped.com/",
+        url: "https://www.financemapped.com/",
         description:
           "Educational explainers and finance history with knowledge maps that connect ideas. Learn how money and markets work.",
         potentialAction: {
           "@type": "SearchAction",
-          target: "https://financemapped.com/?q={search_term_string}",
+          target: "https://www.financemapped.com/?q={search_term_string}",
           "query-input": "required name=search_term_string",
         },
       },
       {
         "@type": "Organization",
         name: "FinanceMapped",
-        url: "https://financemapped.com/",
-        logo: "https://financemapped.com/finance-mapped-education-history-logo.png",
+        url: "https://www.financemapped.com/",
+        logo: "https://www.financemapped.com/finance-mapped-education-history-logo.png",
       },
       {
         "@type": "FAQPage",
@@ -101,32 +88,32 @@ export default function Home({}: Route.ComponentProps) {
     {
       t: "What is money",
       d: "Value, exchange, and why societies use currency.",
-      href: "/learn/core/what-is-money",
+      href: "/finance-education/learn-basics/#what-is-money",
     },
     {
       t: "How banks work",
       d: "Deposits, lending, payments, and safeguards.",
-      href: "/learn/core/how-banks-work",
+      href: "/finance-education/learn-basics/#how-banks-work",
     },
     {
       t: "Credit and interest",
       d: "Borrowing, risk, and the price of money over time.",
-      href: "/learn/core/credit-and-interest",
+      href: "/finance-education/learn-basics/#credit-and-interest",
     },
     {
       t: "Markets and prices",
       d: "Supply, demand, and how prices move.",
-      href: "/learn/core/markets-and-prices",
+      href: "/finance-education/learn-basics/#markets-and-prices",
     },
     {
       t: "Inflation and policy",
       d: "Why prices rise and how policy responds.",
-      href: "/learn/core/inflation-and-policy",
+      href: "/finance-education/learn-basics/#inflation-and-policy",
     },
     {
       t: "Risk and stability",
       d: "Shocks, safeguards, and systemic risks.",
-      href: "/learn/core/risk-and-stability",
+      href: "/finance-education/learn-basics/#risk-and-stability",
     },
   ];
 
@@ -212,14 +199,6 @@ export default function Home({}: Route.ComponentProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Announcement */}
-      <div className="w-full border-b border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-2 text-sm text-slate-700">
-          New history collections and knowledge maps added{" "}
-          {new Date(nowISO).toLocaleDateString()}.
-        </div>
-      </div>
-
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-200 bg-[#0B1B2B]">
         {/* Soft gradient accents */}
@@ -244,11 +223,6 @@ export default function Home({}: Route.ComponentProps) {
           <div className="flex flex-col items-start gap-10 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
               <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl">
-                <img
-                  src={logo}
-                  alt="FinanceMapped logo"
-                  className="inline h-10 w-10 mr-3 mb-2"
-                />
                 Understand money with clear knowledge maps and history
               </h1>
               <p className="mt-4 text-lg text-slate-200">
@@ -259,7 +233,7 @@ export default function Home({}: Route.ComponentProps) {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="/learn/core"
+                  href="/finance-education/learn-basics"
                   className="inline-flex items-center rounded-xl bg-teal-400 px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-teal-300"
                 >
                   Read core concepts
@@ -306,7 +280,7 @@ export default function Home({}: Route.ComponentProps) {
             {
               t: "Core concepts",
               d: "Clear explainers about money, banking, and markets.",
-              href: "/learn/core",
+              href: "/finance-education/learn-basics",
             },
             {
               t: "History",
@@ -478,7 +452,7 @@ export default function Home({}: Route.ComponentProps) {
             </div>
             <div className="flex gap-3">
               <a
-                href="/learn/core"
+                href="/finance-education/learn-basics"
                 className="rounded-xl bg-teal-400 px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-teal-300"
               >
                 Core concepts
@@ -892,22 +866,6 @@ export default function Home({}: Route.ComponentProps) {
           ))}
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-slate-200 bg-slate-50">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-sm text-slate-700">
-          <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
-            <div>© {new Date().getFullYear()} FinanceMapped</div>
-            <div className="text-slate-500">
-              {message ? (
-                <span aria-live="polite">{message}</span>
-              ) : (
-                <span>Educational finance and history</span>
-              )}
-            </div>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }
