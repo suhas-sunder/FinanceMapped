@@ -1,6 +1,6 @@
 // app/routes/finance-education.learn-basics._index.tsx
 import { json } from "@remix-run/node";
-import type { Route } from "./+types/index";
+import type { Route } from "./+types/learn-basics";
 import { useLoaderData } from "react-router";
 
 export function meta({}: Route.MetaArgs) {

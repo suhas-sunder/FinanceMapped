@@ -54,7 +54,7 @@ function NavBar() {
   const [open, setOpen] = useState(false);
 
   const navItems = [
-    { name: "Finance Education", href: "/finance-education/learn-basics" },
+    { name: "Finance Education", href: "/finance-education" },
     // { name: "History", href: "/history" },
     // { name: "Knowledge Maps", href: "/maps" },
     // { name: "Games", href: "/learn/games/concept-match" },
@@ -67,7 +67,7 @@ function NavBar() {
         {/* Logo & Brand */}
         <NavLink to="/" className="flex items-center gap-2">
           <img src={logo} alt="FinanceMapped" className="h-8 w-8" />
-          <span className="font-semibold text-lg">FinanceMapped</span>
+          <span className="font-semibold text-xl">FinanceMapped</span>
         </NavLink>
 
         {/* Desktop Menu */}
@@ -77,9 +77,9 @@ function NavBar() {
               key={item.name}
               to={item.href}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${
+                `font-medium transition-colors ${
                   isActive
-                    ? "text-teal-300 pb-1"
+                    ? "text-teal-300"
                     : "text-slate-200 hover:text-teal-300"
                 }`
               }
